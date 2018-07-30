@@ -1,0 +1,20 @@
+
+<hi> <%= @cocktail.name %> </hi>
+
+<h2>Ingredient's list</h2>
+
+  <% if @cocktail.doses.empty? %>
+      <p>This cocktail has no ingredients yet!</p>
+  <% else %>
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+        <li><%=  dose.ingredient[:name] %> <%= dose.description %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+
+<%= link_to 'add ingredient',  new_cocktail_dose_path(@cocktail) %>
+
+
+<%= link_to 'Back', cocktails_path %>
